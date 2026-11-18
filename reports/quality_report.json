@@ -1,0 +1,13 @@
+{
+  "rows_in": 2010,
+  "rows_out": 1965,
+  "rows_rejected": 45,
+  "issues": {
+    "null_key": 15,
+    "bad_date": 0,
+    "null_or_bad_premium": 20,
+    "negative_claim": 0,
+    "unknown_product": 0,
+    "duplicate_policy": 10
+  }
+}

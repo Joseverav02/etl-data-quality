@@ -1,0 +1,21 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - run: pytest -q
+      - name: Ejecución de extremo a extremo con datos de muestra
+        run: |
+          python data/make_sample.py
+          PYTHONPATH=src python -m etl --input data/policies_sample.csv --db /tmp/warehouse.db
